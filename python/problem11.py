@@ -54,15 +54,43 @@ m = np.array([
 def calculate(m):
     value_max = 0
     value_temp = 0
-    # virtical
+    # Calculate Horizantals
+    for x in range(0,20):
+        for y in range(0,17):
+            # sum items in first row
+            #print("m[{}][{}]={} m[{}][{}]={} m[{}][{}]={} m[{}][{}]={}".format(x,y,m[x,y],x,y+1,m[x,y+1],x,y+2,m[x,y+2],x,y+3,m[x,y+3]))
+            value_temp = m[x,y] * m[x,y+1] * m[x,y+2] * m[x,y+3]
+            if value_temp > value_max:
+                value_max = value_temp
+            print(value_max)
+    # Calculate Virtical 
     for x in range(0,17):
         for y in range(0,20):
-            print("m[{}][{}]={} m[{}][{}]={} m[{}][{}]={} m[{}][{}]={}".format(x,y,m[x,y],x+1,y,m[x+1,y],x+2,y,m[x+2,y],x+3,y,m[x+3,y]))
-            value_temp = m[x,y] + m[x+1,y] + m[x+2,y] + m[x+3,y]
-            print(value_temp)
+            # print("m[{}][{}]={} m[{}][{}]={} m[{}][{}]={} m[{}][{}]={}".format(x,y,m[x,y],x+1,y,m[x+1,y],x+2,y,m[x+2,y],x+3,y,m[x+3,y]))
+            value_temp = m[x,y] * m[x+1,y] * m[x+2,y] * m[x+3,y]
+            if value_temp > value_max:
+                value_max = value_temp
+            print(value_max)
+    # Calculate Diagnal
+    for x in range(0,17):
+        for y in range(0,17):
+            # print("m[{}][{}]={} m[{}][{}]={} m[{}][{}]={} m[{}][{}]={}".format(x,y,m[x,y],x+1,y+1,m[x+1,y+1],x+2,y+2,m[x+2,y+2],x+3,y+3,m[x+3,y+3]))
+            value_temp = m[x,y] * m[x+1,y+1] * m[x+2,y+2] * m[x+3,y+3]
+            if value_temp > value_max:
+                value_max = value_temp
+            print(value_max)
+    # Calculate Diagnal
+    for x in range(0,17):
+        for y in range(0,17):
+            # print("m[{}][{}]={} m[{}][{}]={} m[{}][{}]={} m[{}][{}]={}".format(x+3,y,m[x+3,y],x+2,y+1,m[x+2,y+1],x+1,y+2,m[x+1,y+2],x,y+3,m[x,y+3]))
+            value_temp = m[x+3,y] * m[x+2,y+1] * m[x+1,y+2] * m[x,y+3]
+            if value_temp > value_max:
+                value_max = value_temp
+            print(value_max)
+    return value_max
 
 if __name__ == "__main__":
-    print("This is a test")
-    print(m[2,10])
-    print(m.shape)
-    calculate(m)
+    # print("This is a test")
+    # print(m[2,10])
+    # print(m.shape)
+    print("The max value is {}".format(calculate(m)))
