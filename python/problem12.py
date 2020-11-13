@@ -26,7 +26,12 @@
 # output: N/A
 # return: array of factors
 def factor(factor_number):
-    print("Under construction")
+    factors = []
+    for i in range(1,factor_number+1):
+        if factor_number % i == 0:
+            factors.append(i)
+
+    return factors
 
 # input: number to triangle
 # output: N/A
@@ -42,5 +47,18 @@ def triangular(triangular_number):
 #   Main Program Execution
 #
 if __name__ == "__main__":
+    count = 0
+    t_number = 0
+    num_factors = 0
     for x in range(1,8):
         print("{}, value {}".format(x,triangular(x)))
+        print("Factors: {}".format(factor(triangular(x))))
+
+    while num_factors < 500:
+        count += 1
+        t_number = triangular(count)
+        num_factors = len(factor(t_number))
+        print(num_factors)
+
+    print(t_number)
+
