@@ -54,15 +54,17 @@ if __name__ == "__main__":
     count = 0
     t_number = 0
     num_factors = 0
-    for x in range(1,100):
-        print("{}, value {}".format(x,triangular(x)))
-        print("Factors: {}".format(factor(triangular(x))))
+#    for x in range(1,100):
+#        print("{}, value {}".format(x,triangular(x)))
+#        print("Factors: {}".format(factor(triangular(x))))
 
     while num_factors < 500:
         count += 1
         t_number = triangular(count)
 #        factors = factor(t_number)
 #        print(factors.size)
-        print(factor(t_number))
+        num_factors = factor(t_number)
+#        print(t_number)
+        print(num_factors)
     print(t_number)
 
